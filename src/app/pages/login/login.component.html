@@ -1,0 +1,26 @@
+<div class="outer-container">
+
+    <div class="inner-top-container">
+        <div class="logo-container"></div>
+    </div>
+    <div class="inner-middle-container">
+        <div class="form-container">
+            <div class="form-header">
+                <h1>{{formMetaMap[activeForm]['topHeader']}}</h1>
+                <span>{{formMetaMap[activeForm]['topText']}}</span>
+            </div>
+            <div class="form-body">
+                <div class="form signin-form">
+                    <span class="btn-prime">{{formMetaMap[activeForm]['submitText']}}</span>
+                </div>
+            </div>
+            <div class="form-footer">
+                <span classs="form-switch-text">{{formMetaMap[activeForm]['switchHelpText']}} </span>
+                <span class="form-switch-link btn-link" (click)="changeForm()">{{formMetaMap[activeForm]['switchLinkText']}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="inner-bottom-container">
+
+    </div>
+</div>

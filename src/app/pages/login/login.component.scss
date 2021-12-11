@@ -1,0 +1,67 @@
+:host {
+    --themeColor: #001b30;
+    --loginFormBackgroundColor: white;
+    --themeContrastColor: white;
+}
+
+.inner-top-container {
+    height: 70px;
+    background: var(--themeColor);
+    padding: 20px;
+}
+
+.logo-container {
+    background-image: url('../../../assets/login-logo.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 100%;
+}
+
+.inner-middle-container {
+    background: var(--themeColor);
+}
+
+.form-container {
+    height: 100%;
+    border-radius: 10px 10px 0 0;
+    background: var(--loginFormBackgroundColor);
+    text-align: center;
+}
+
+.form-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: var(--themeColor);
+    h1 {
+        margin-bottom: 0px;
+    }
+}
+
+.form-body {
+    margin: 20px;
+
+}
+
+.form-footer {
+    .form-switch-link {
+        font-weight: 600;
+        color: var(--themeColor);
+
+    }
+}
+
+.btn-link {
+    cursor: pointer;
+    color: var(--themeColor);
+}
+
+.btn-prime {
+    cursor: pointer;
+    color: var(--themeContrastColor);
+    background: var(--themeColor);
+    padding: 10px 30px;
+    border-radius: 20px;
+    font-weight: 600;
+}
