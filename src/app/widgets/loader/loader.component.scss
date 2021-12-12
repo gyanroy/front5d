@@ -1,0 +1,12 @@
+.loader-container {
+    position: fixed;
+    z-index: 99;
+    height: 100vh;
+    width: 100vw;
+    background: var(--loaderBgColor);
+}
+
+.start-loader-spinner {
+    border: 10px solid var(--themeContrastColor);
+    border-top: 10px solid var(--themeColor); 
+}

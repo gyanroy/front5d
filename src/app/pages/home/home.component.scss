@@ -1,0 +1,22 @@
+button {
+    background: var(--themeContrastColor);
+    color: var(--themeColor);
+}
+
+.mat-toolbar {
+    justify-content: space-between;
+    background: var(--themeColor);
+    .mat-icon {
+        color: var(--themeContrastColor);
+    }
+}
+
+.btn-prime-anti {
+    background: var(--themeContrastColor);
+    color: var(--themeColor);
+}
+
+.btn-menu {
+    font-size: 1.6em;
+    padding: 20px;
+}
