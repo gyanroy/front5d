@@ -22,13 +22,13 @@ export class AuthGuardService {
 
   async setRoute(state: RouterStateSnapshot): Promise<boolean> {
     try {
-      const user = await this.userService.verifyToken();
+      const user = await this.userService.refreshToken();
       console.log({user})
       if (!user) throw new Error('User not found');
       console.log('status-in', await this.setLoggedInRoute(state));
       return await this.setLoggedInRoute(state);
     } catch(err: any) {
-      console.error(err);
+      console.error(JSON.stringify(err));
       console.log('status-out', await this.setLoggedOutRoute(state));
       return await this.setLoggedOutRoute(state);
     }

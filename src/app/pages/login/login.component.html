@@ -1,26 +1,146 @@
 <div class="outer-container">
+  <div class="inner-top-container">
+    <div class="logo-container"></div>
+  </div>
+  <div class="inner-middle-container">
+    <div class="form-container">
+      <div class="form-header">
+        <h1>{{ formMetaMap[activeForm]["topHeader"] }}</h1>
+        <span>{{ formMetaMap[activeForm]["topText"] }}</span>
+      </div>
+      <div class="form-body">
+        <div class="form-content">
+          <form
+            [formGroup]="forms[activeForm]"
+            (ngSubmit)="submitForm(activeForm)"
+            [ngClass]="{
+              'form-signin': activeForm == 'signin',
+              'form-signup': activeForm == 'signup'
+            }"
+          >
+            <ng-container *ngFor="let fieldInfo of formFieldsMeta[activeForm]">
+              <!-- firstname input  -->
+              <ng-container *ngIf="fieldInfo.type == 'text'">
+                <mat-form-field appearance="standard" floatLabel="auto">
+                  <input
+                    matInput
+                    [placeholder]="fieldInfo.placeholder"
+                    inputmode="text"
+                    [formControlName]="fieldInfo.formKey"
+                  />
+                  <mat-icon matPrefix>{{ fieldInfo.icon }}</mat-icon>
+                  <mat-error *ngIf="fieldInfo.isRequired">{{
+                    fieldInfo.errMsg
+                  }}</mat-error>
+                </mat-form-field>
+              </ng-container>
+              <!-- email input -->
+              <ng-container *ngIf="fieldInfo.type == 'email'">
+                <mat-form-field appearance="standard" floatLabel="auto">
+                  <input
+                    matInput
+                    [placeholder]="fieldInfo.placeholder"
+                    inputmode="email"
+                    type="email"
+                    [formControlName]="fieldInfo.formKey"
+                  />
+                  <mat-icon matPrefix>{{ fieldInfo.icon }}</mat-icon>
+                  <mat-error *ngIf="fieldInfo.isRequired">{{
+                    fieldInfo.errMsg
+                  }}</mat-error>
+                </mat-form-field>
+              </ng-container>
 
-    <div class="inner-top-container">
-        <div class="logo-container"></div>
-    </div>
-    <div class="inner-middle-container">
-        <div class="form-container">
-            <div class="form-header">
-                <h1>{{formMetaMap[activeForm]['topHeader']}}</h1>
-                <span>{{formMetaMap[activeForm]['topText']}}</span>
-            </div>
-            <div class="form-body">
-                <div class="form signin-form">
-                    <span class="btn-prime">{{formMetaMap[activeForm]['submitText']}}</span>
-                </div>
-            </div>
-            <div class="form-footer">
-                <span classs="form-switch-text">{{formMetaMap[activeForm]['switchHelpText']}} </span>
-                <span class="form-switch-link btn-link" (click)="changeForm()">{{formMetaMap[activeForm]['switchLinkText']}}</span>
-            </div>
+              <!-- password input  -->
+              <ng-container *ngIf="fieldInfo.type == 'password'">
+                <mat-form-field appearance="standard" floatLabel="auto">
+                  <input
+                    matInput
+                    [placeholder]="fieldInfo.placeholder"
+                    type="password"
+                    inputmode="text"
+                    [formControlName]="fieldInfo.formKey"
+                  />
+                  <mat-icon matPrefix>{{ fieldInfo.icon }}</mat-icon>
+                  <!-- <mat-icon matSuffix>eye_outline</mat-icon> -->
+                  <mat-error *ngIf="fieldInfo.isRequired">{{
+                    fieldInfo.errMsg
+                  }}</mat-error>
+                </mat-form-field>
+              </ng-container>
+
+              <!-- select input  -->
+              <ng-container *ngIf="fieldInfo.type == 'select'">
+                <mat-form-field appearance="standard" floatLabel="always">
+                  <mat-select
+                    [title]="fieldInfo.title"
+                    [formControlName]="fieldInfo.formKey"
+                    #singleSelect
+                  >
+                    <!-- <mat-option>
+                      <ngx-mat-select-search></ngx-mat-select-search>
+                    </mat-option> -->
+                    <ng-container *ngIf="fieldInfo.options">
+                      <mat-option
+                        *ngFor="let city of fieldInfo.options"
+                        [value]="city"
+                      >
+                        {{ city }}
+                      </mat-option>
+                    </ng-container>
+                  </mat-select>
+                  <mat-icon *ngIf="fieldInfo.icon" matPrefix>{{
+                    fieldInfo.icon
+                  }}</mat-icon>
+                  <!-- <mat-icon matSuffix>eye_outline</mat-icon> -->
+                  <mat-error *ngIf="fieldInfo.isRequired">{{
+                    fieldInfo.errMsg
+                  }}</mat-error>
+                </mat-form-field>
+              </ng-container>
+
+              <!-- mobile input  -->
+              <ng-container *ngIf="fieldInfo.type == 'mobile'">
+                <mat-form-field appearance="standard" floatLabel="always">
+                  <input
+                    matInput
+                    [placeholder]="fieldInfo.placeholder"
+                    type="tel"
+                    inputmode="tel"
+                    [formControlName]="fieldInfo.formKey"
+                  />
+                  <mat-icon *ngIf="fieldInfo.icon" matPrefix>{{
+                    fieldInfo.icon
+                  }}</mat-icon>
+                  <!-- <mat-icon matSuffix>eye_outline</mat-icon> -->
+                  <mat-error *ngIf="fieldInfo.isRequired">{{
+                    fieldInfo.errMsg
+                  }}</mat-error>
+                </mat-form-field>
+              </ng-container>
+            </ng-container>
+          </form>
         </div>
+        <div class="form-submit">
+          <div
+            mat-elevation-z4
+            class="btn-prime"
+            [ngClass]="{ 'btn-disabled': !forms[activeForm].valid }"
+            (click)="submitForm(activeForm)"
+          >
+            {{ formMetaMap[activeForm]["submitText"] }}
+          </div>
+        </div>
+      </div>
+      <div class="form-footer">
+        <span classs="form-switch-text"
+          >{{ formMetaMap[activeForm]["switchHelpText"] }}
+        </span>
+        <span class="form-switch-link btn-link" (click)="changeForm()">{{
+          formMetaMap[activeForm]["switchLinkText"]
+        }}</span>
+      </div>
     </div>
-    <div class="inner-bottom-container">
-
-    </div>
+  </div>
+  <div class="inner-bottom-container"></div>
 </div>

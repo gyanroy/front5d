@@ -1,12 +1,9 @@
-:host {
-    --themeColor: #001b30;
-    --loginFormBackgroundColor: white;
-    --themeContrastColor: white;
+.outer-container {
+    background: var(--themeColor);
 }
 
 .inner-top-container {
     height: 70px;
-    background: var(--themeColor);
     padding: 20px;
 }
 
@@ -19,7 +16,7 @@
 }
 
 .inner-middle-container {
-    background: var(--themeColor);
+    height: calc(100% - 110px);
 }
 
 .form-container {
@@ -27,6 +24,7 @@
     border-radius: 10px 10px 0 0;
     background: var(--loginFormBackgroundColor);
     text-align: center;
+    padding: 0 10px;
 }
 
 .form-header {
@@ -40,16 +38,44 @@
 }
 
 .form-body {
-    margin: 20px;
+    margin: 20px 10px;
+    .form-content {
+        display: flex;
+        justify-content: space-around;
+    }
+    .form-submit {
+        min-width: 70px;
+        display: flex;
+        justify-content: center;
+        margin-top: 40px;
+    }
+}
 
+.form-signin {
+    display: flex;
+    flex-direction: column;
+    .mat-form-field {
+        width: auto;
+        min-width: 150px;
+        margin: 20px;
+    }
+}
+
+.form-signup {
+    display: inline;
+    .mat-form-field {
+        width: 45%;
+        min-width: 150px;
+        margin: 20px;
+    }
 }
 
 .form-footer {
     .form-switch-link {
         font-weight: 600;
         color: var(--themeColor);
-
     }
+    margin-bottom: 20px;
 }
 
 .btn-link {
@@ -64,4 +90,17 @@
     padding: 10px 30px;
     border-radius: 20px;
     font-weight: 600;
+    width: fit-content;
+}
+
+.btn-disabled {
+    cursor: not-allowed;
+    opacity: 0.75;
+}
+
+select {
+    border: none;
+    background: white;
+    outline: none;
+    width: 100%;
 }

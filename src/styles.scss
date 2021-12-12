@@ -5,3 +5,62 @@ body {
     margin: 0;
     font-family: 'Inter';
 }
+
+.outer-container {
+    height: 100vh;
+}
+
+.mat-icon {
+    font-size: 1em;
+}
+
+.mat-error {
+    font-size: 0.7em;
+    color: var(--errorColor);
+    opacity: 0.8;
+}
+
+.mat-form-field {
+    font-size: 0.9rem;
+    width: 50%;
+    margin: 15px 0;
+    border-bottom: 1px solid var(--inputBottomBorder);
+}
+
+.start-loader-spinner {
+    border: 10px solid var(--themeColor);
+    border-top: 10px solid var(--themeContrastColor); 
+    position: absolute;
+    top: calc(50% - 70px);
+    left: calc(50% - 70px);
+    height: 120px;
+    width: 120px;
+    border-radius: 100%;
+    animation: spin 2s ease-in-out infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.start-loader-logo {
+    background: url('./assets/logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    top: calc(50% - 50px);
+    left: calc(50% - 50px);
+    height: 100px;
+    width: 100px;
+}
+
+
+:root {
+    --themeColor: #001b30;
+    --loginFormBackgroundColor: white;
+    --themeContrastColor: white;
+    --inputBottomBorder: rgba(0, 0, 0, 0.2);
+    --errorColor: red
+}

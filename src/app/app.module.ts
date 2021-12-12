@@ -1,11 +1,20 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WidgetsModule } from './widgets/widgets.module';
-
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+import { NgxMatIntlTelInputModule } from 'ngx-mat-intl-tel-input';
+import { MatIconModule } from '@angular/material/icon';
+import { ToastrModule } from 'ngx-toastr';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
 // 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -24,11 +33,20 @@ import { JWTInterceptor } from './services/interceptor.service';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule, 
+    BrowserAnimationsModule,
+    AppRoutingModule,
     HttpClientModule,
     WidgetsModule,
     FormsModule,
     ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    NgxMatIntlTelInputModule,
+    MatIconModule,
+    ToastrModule.forRoot(),
+    MatSidenavModule,
+    MatToolbarModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JWTInterceptor, multi: true },
