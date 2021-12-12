@@ -47,6 +47,25 @@ export class ApiService {
     }
   }
 
+  delete5dApi = async (apiURL: any, headers = {}, options = {}) => {
+    try {
+      const res = await this.http.delete(this.baseURL + apiURL, Object.assign(options, { headers }));
+      const promiseRes = lastValueFrom(res);
+      return promiseRes;
+    } catch (err: any) {
+      if (err.status === 401) this.logOut(false);
+      throw new Error(err);
+    }
+  }
+
+  uploadToAWS = async (files: File[]) => {
+    try {
+      return true;
+    } catch (err: any) {
+      throw new Error(err);
+    }
+  }
+
   logOut(redirctToLogin: boolean) {
     localStorage.clear();
     if (redirctToLogin) this.router.navigateByUrl('/login');

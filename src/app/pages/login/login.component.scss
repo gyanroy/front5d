@@ -22,7 +22,7 @@
 .form-container {
     height: 100%;
     border-radius: 10px 10px 0 0;
-    background: var(--loginFormBackgroundColor);
+    background: var(--loginFormBgColor);
     text-align: center;
     padding: 0 10px;
 }
@@ -54,10 +54,13 @@
 .form-signin {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    width: 100%;
     .mat-form-field {
-        width: auto;
+        width: 100%;
         min-width: 150px;
-        margin: 20px;
+        margin: 20px 0;
+        max-width: 400px;
     }
 }
 
@@ -76,31 +79,4 @@
         color: var(--themeColor);
     }
     margin-bottom: 20px;
-}
-
-.btn-link {
-    cursor: pointer;
-    color: var(--themeColor);
-}
-
-.btn-prime {
-    cursor: pointer;
-    color: var(--themeContrastColor);
-    background: var(--themeColor);
-    padding: 10px 30px;
-    border-radius: 20px;
-    font-weight: 600;
-    width: fit-content;
-}
-
-.btn-disabled {
-    cursor: not-allowed;
-    opacity: 0.75;
-}
-
-select {
-    border: none;
-    background: white;
-    outline: none;
-    width: 100%;
 }

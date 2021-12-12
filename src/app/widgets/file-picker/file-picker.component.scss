@@ -1,0 +1,40 @@
+:host {
+    --skyblue: skyblue;
+    --gray: grey;
+    --info: #a4a4b4;
+    --boxBorderColor: #d0d0d8;
+    --cancelColor: #000;
+}
+
+
+.upload-new {
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // flex-direction: column;
+    width: fit-content;
+    padding: 16px 32px;
+    margin: 24px;
+    border: 1px dashed var(--boxBorderColor);
+    color: var(--themeColor);
+    .heading {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        p {
+            margin: 5px;
+        }
+        .txt-bold {
+            font-weight: bold;
+        }
+    }
+}
+
+.hidden-file-input {
+    display: none;
+}
+
+.background-fade {
+    background: var(--loaderBgColor);
+}

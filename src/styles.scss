@@ -56,11 +56,38 @@ body {
     width: 100px;
 }
 
+.btn-link {
+    cursor: pointer;
+    color: var(--themeColor);
+}
+
+.btn-prime {
+    cursor: pointer;
+    color: var(--themeContrastColor);
+    background: var(--themeColor);
+    padding: 10px 30px;
+    border-radius: 20px;
+    font-weight: 600;
+    width: fit-content;
+}
+
+.btn-disabled {
+    cursor: not-allowed;
+    opacity: 0.75;
+}
+
+select {
+    border: none;
+    background: white;
+    outline: none;
+    width: 100%;
+}
 
 :root {
     --themeColor: #001b30;
-    --loginFormBackgroundColor: white;
+    --loginFormBgColor: white;
     --themeContrastColor: white;
     --inputBottomBorder: rgba(0, 0, 0, 0.2);
-    --errorColor: red
+    --errorColor: red;
+    --loaderBgColor: rgba(0, 0, 0, 0.2)
 }

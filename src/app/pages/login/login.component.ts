@@ -9,6 +9,7 @@ import cities from '../../../assets/json-data/cities.json';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  isLoading: boolean = false;
   activeForm: FormTypes = 'signup';
   formMetaMap = {
     'signin': {
@@ -69,7 +70,7 @@ export class LoginComponent implements OnInit {
         type: 'mobile',
         isRequired: true,
         errMsg: 'Mobile must be 10 digits',
-        icon: ''
+        icon: 'phone_outline'
       },
       {
         key: 'emailID',
@@ -84,13 +85,13 @@ export class LoginComponent implements OnInit {
       {
         key: 'city',
         title: 'City',
-        placeholder: 'City',
+        placeholder: 'Select a city',
         formKey: 'city',
         type: 'select',
         isRequired: true,
         errMsg: 'Select a city',
         options: cities,
-        icon: 'map_outline'
+        icon: 'place_outline'
       },
       {
         key: 'password',
@@ -149,6 +150,12 @@ export class LoginComponent implements OnInit {
     'signin': this.signInForm,
     'signup': this.signUpForm
   }
+
+  passwdState = {
+    'signin': 'visibility',
+    'signup': 'visibility'
+  }
+
   constructor(
     private userService: UserService,
     private toastr: ToastrService
@@ -172,24 +179,41 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  passwdStateChange(id: string) {
+    const passwdStateNew = this.passwdState[this.activeForm] == 'visibility' ? 'visibility_off' : 'visibility';
+    const passwordEle = document.getElementById(this.activeForm+id);
+    if (!passwordEle) return;
+    if (passwdStateNew === 'visibility') {
+      passwordEle?.setAttribute('type', 'password');
+    } else {
+      passwordEle?.setAttribute('type', 'text');
+    }
+    this.passwdState[this.activeForm] = passwdStateNew;
+  }
+
   async signin() {
     try {
+      this.isLoading = true;
       console.log(this.signInForm.value);
       const formData = this.signInForm.value;
       const res = await this.userService.loginUser(formData.email, formData.password);
+      this.isLoading = false;
     } catch(err: any) {
-      console.error(JSON.stringify(err));
+      this.toastr.error(err.msg || err.message, 'Log In failed.');
+      this.isLoading = false;
     }
   }
 
   async signup() {
     try {
-      // console.log(this.signInForm.value);
+      this.isLoading = true;
       const formData = this.signUpForm.value;
       const res = await this.userService.signupUser(formData);
+      this.isLoading = false;
     } catch(err: any) {
       console.error(JSON.stringify(err));
       this.toastr.error(err.msg || err.message, 'Sign Up failed.');
+      this.isLoading = false;
     }
   }
 }

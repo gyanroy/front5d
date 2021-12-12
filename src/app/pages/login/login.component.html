@@ -1,4 +1,7 @@
 <div class="outer-container">
+  <ng-container *ngIf="isLoading">
+    <app-loader></app-loader>
+  </ng-container>
   <div class="inner-top-container">
     <div class="logo-container"></div>
   </div>
@@ -60,9 +63,10 @@
                     type="password"
                     inputmode="text"
                     [formControlName]="fieldInfo.formKey"
+                    id={{activeForm+fieldInfo.formKey}}
                   />
                   <mat-icon matPrefix>{{ fieldInfo.icon }}</mat-icon>
-                  <!-- <mat-icon matSuffix>eye_outline</mat-icon> -->
+                  <mat-icon matSuffix class='btn-link' (click)="passwdStateChange(fieldInfo.formKey)">{{passwdState[activeForm]}}</mat-icon>
                   <mat-error *ngIf="fieldInfo.isRequired">{{
                     fieldInfo.errMsg
                   }}</mat-error>
@@ -72,23 +76,25 @@
               <!-- select input  -->
               <ng-container *ngIf="fieldInfo.type == 'select'">
                 <mat-form-field appearance="standard" floatLabel="always">
-                  <mat-select
+                  <select
+                    matNativeControl
                     [title]="fieldInfo.title"
                     [formControlName]="fieldInfo.formKey"
-                    #singleSelect
+                    [name]="fieldInfo.title"
                   >
                     <!-- <mat-option>
                       <ngx-mat-select-search></ngx-mat-select-search>
                     </mat-option> -->
+                    <option value=null selected disabled>{{fieldInfo.placeholder}}</option>
                     <ng-container *ngIf="fieldInfo.options">
-                      <mat-option
+                      <option
                         *ngFor="let city of fieldInfo.options"
                         [value]="city"
                       >
                         {{ city }}
-                      </mat-option>
+                      </option>
                     </ng-container>
-                  </mat-select>
+                  </select>
                   <mat-icon *ngIf="fieldInfo.icon" matPrefix>{{
                     fieldInfo.icon
                   }}</mat-icon>

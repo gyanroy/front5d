@@ -1,0 +1,15 @@
+<div>
+    <app-loader *ngIf='isLoading'></app-loader>
+
+    <div class='upload-new' (drop)="dropListener($event)" (dragover)="fileDropEvent($event, true)"
+        (dragleave)="fileDropEvent($event, false)" [ngClass]='{"background-fade": isFileDropping}'>
+        <div class='heading'>
+            <span>Drag and drop file</span>
+            <p class="txt-bold">OR</p>
+            <p class='btn-prime' (click)='openFilePicker()'>Browse</p>
+
+            <input id="attachment{{fileInputId}}" type="file" class='hidden-file-input' (change)="getFile($event)"
+                [multiple]="multipleSupport" />
+        </div>
+    </div>
+</div>

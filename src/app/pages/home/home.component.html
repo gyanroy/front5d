@@ -1,21 +1,19 @@
 <mat-toolbar>
-  <button
-    mat-icon-button
-    class="icon-menu"
-    aria-label="Menu"
-  >
-    <mat-icon>menu</mat-icon>
-  </button>
+    <mat-icon class="btn-link btn-menu">menu</mat-icon>
+    <span class="btn-prime btn-prime-anti" (click)='logout()'>Logout</span>
 </mat-toolbar>
 <mat-drawer-container>
   <mat-drawer>
-      <div class="logo-container">
+    <div class="logo-container">
 
-      </div>
-      <div class="menu-items">
-        <ng-container>
-            
-        </ng-container>
-      </div>
+    </div>
+    <div class="menu-items">
+        <div>item1</div>
+    </div>
   </mat-drawer>
 </mat-drawer-container>
+<div>
+  <app-file-picker
+    (newFileEvent)="processFiles($event)"
+  ></app-file-picker>
+</div>
